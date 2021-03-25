@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+
+    <header class="jumbotron jumbotron-fluid custom-jumbotron">
+        <div class="container text-center">
+            <h1>Weather Dashboard</h1>
+        </div>
+    </header>
+
+    <main class="container-fluid">
+        <section class="col-12 col-md-4 float-left">
+            <div class="card custom-card">
+                <h3 class="card-header">City Search</h3>
+                <div class="card-body">
+                    <div class="card-text">
+                        <form id="cities" class="form-inline my-2 my-lg-0">
+                            <input id="searchCity" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                        <form id="cityhistory" class="">
+                    
+                        </form>
+
+                    </div>
+                </div>
+        </section>
+
+        <div class="col-8 float-right">
+            <section class="card bg-light text-dark custom-dash">
+                <div id="current-day"></div>
+                <div id="uvl-index"></div>
+            </section>
+            <br>
+            <section>
+            <h2>5-Day Forcast</h2>
+            <div id="weekForcast" class="row"></div>
+            </section>
+        </div>
+    </main>
 
 
 
@@ -16,7 +56,11 @@
 
 
 
-
-    <script src="assests/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="assets\js\script.js"></script>
 </body>
+
 </html>
