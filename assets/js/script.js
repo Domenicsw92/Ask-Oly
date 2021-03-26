@@ -2,17 +2,19 @@
 
 var searchFormEl = document.querySelector('#cities');
 var currentDay = document.querySelector('#current-city')
-var apiKey = '44fc609f492616405803745592784814'
-var foreCastDays = '5'
+var apiKey = '44fc609f492616405803745592784814';
+var foreCastDays = '5';
+var forcecastApikey = '13d310a8ade98b5144daa56c623f1370';
 
-function savedCities(){
+
+function savedCities() {
     localStorage.setItem("cities", JSON.stringify(savedList));
 }
 
-function createdCitylist(searchInputVal){
+function createdCitylist(searchInputVal) {
     var savedCities = document.createElement("button")
-    savedCities.style.display= "block";
-    savedCities.textContent=searchInputVal;
+    savedCities.style.display = "block";
+    savedCities.textContent = searchInputVal;
 }
 
 function handleSearchFormSubmit(event) {
@@ -70,12 +72,11 @@ function handleSearchFormSubmit(event) {
             currentDayFeel.textContent = 'Temperature Feels Like:  ' + currentdata.main.feels_like + '°F';
             currentDayhumid.textContent = 'Humidity: ' + currentdata.main.humidity + '%';
             currentDaywind.textContent = 'Wind Speed: ' + currentdata.wind.speed + 'mph';
-
-
         })
-    var weekQueryUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${searchInputVal}&cnt=${foreCastDays}&appid=${apiKey}&units=imperial`
 
-   // var weekQueryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchInputVal}&appid=${apiKey}&units=imperial`;
+
+
+    var weekQueryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchInputVal}&appid=${apiKey}&units=imperial`;
 
     fetch(weekQueryUrl)
         .then(function (res) {
@@ -83,6 +84,7 @@ function handleSearchFormSubmit(event) {
         })
 
         .then(function (forecastdata) {
+            
             console.log(forecastdata)
             day1Date = document.querySelector("#day1Date")
             day1Weather = document.querySelector("#day1weather")
@@ -96,18 +98,14 @@ function handleSearchFormSubmit(event) {
             day1Humid.textContent = 'Humidity: ' + forecastdata.list[2].main.humidity + '%';
             day1Wind.textContent = 'Wind Speed: ' + forecastdata.list[2].wind.speed + 'mph';
 
-            console.log(forecastdata.list[10].clouds.dt_txt);
-            console.log(forecastdata.list[10].weather.icon);
-            console.log(forecastdata.list[10].main.temp);
-            console.log(forecastdata.list[10].main.humidity);
-            console.log(forecastdata.list[10].wind.speed);
+        
             day2Date = document.querySelector("#day2Date")
             day2Weather = document.querySelector("#day2weather")
             day2Temp = document.querySelector("#day2temp")
             day2Humid = document.querySelector("#day2humid")
             day2Wind = document.querySelector("#day2wind")
 
-            day2Date.textContent =moment(forecastdata.list[10].dt_txt).format("MMM D, YYYY");
+            day2Date.textContent = moment(forecastdata.list[10].dt_txt).format("MMM D, YYYY");
             day2Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[10].weather[0].icon + ".png")
             day2Temp.textContent = 'Temperature: ' + forecastdata.list[10].main.temp + '°F';
             day2Humid.textContent = 'Humidity: ' + forecastdata.list[10].main.humidity + '%';
@@ -115,54 +113,39 @@ function handleSearchFormSubmit(event) {
 
 
             ///Day3forceast//
-            console.log(forecastdata.list[18].clouds.dt_txt);
-            console.log(forecastdata.list[18].weather.icon);
-            console.log(forecastdata.list[18].main.temp);
-            console.log(forecastdata.list[18].main.humidity);
-            console.log(forecastdata.list[18].wind.speed);
             day3Date = document.querySelector("#day3Date")
             day3Weather = document.querySelector("#day3weather")
             day3Temp = document.querySelector("#day3temp")
             day3Humid = document.querySelector("#day3humid")
             day3Wind = document.querySelector("#day3wind")
 
-            day3Date.textContent =moment(forecastdata.list[18].dt_txt).format("MMM D, YYYY");
+            day3Date.textContent = moment(forecastdata.list[18].dt_txt).format("MMM D, YYYY");
             day3Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[18].weather[0].icon + ".png")
             day3Temp.textContent = 'Temperature: ' + forecastdata.list[18].main.temp + '°F';
             day3Humid.textContent = 'Humidity: ' + forecastdata.list[18].main.humidity + '%';
             day3Wind.textContent = 'Wind Speed: ' + forecastdata.list[18].wind.speed + 'mph';
 
             //Day 4 forecast//
-            console.log(forecastdata.list[26].clouds.dt_txt);
-            console.log(forecastdata.list[26].weather.icon);
-            console.log(forecastdata.list[26].main.temp);
-            console.log(forecastdata.list[26].main.humidity);
-            console.log(forecastdata.list[26].wind.speed);
             day4Date = document.querySelector("#day4Date")
             day4Weather = document.querySelector("#day4weather")
             day4Temp = document.querySelector("#day4temp")
             day4Humid = document.querySelector("#day4humid")
             day4Wind = document.querySelector("#day4wind")
 
-            day4Date.textContent =moment(forecastdata.list[26].dt_txt).format("MMM D, YYYY");
+            day4Date.textContent = moment(forecastdata.list[26].dt_txt).format("MMM D, YYYY");
             day4Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[26].weather[0].icon + ".png")
             day4Temp.textContent = 'Temperature: ' + forecastdata.list[26].main.temp + '°F';
             day4Humid.textContent = 'Humidity: ' + forecastdata.list[26].main.humidity + '%';
             day4Wind.textContent = 'Wind Speed: ' + forecastdata.list[26].wind.speed + 'mph';
 
             //Day 5 forecast//
-            console.log(forecastdata.list[34].clouds.dt_txt);
-            console.log(forecastdata.list[34].weather.icon);
-            console.log(forecastdata.list[34].main.temp);
-            console.log(forecastdata.list[34].main.humidity);
-            console.log(forecastdata.list[34].wind.speed);
             day5Date = document.querySelector("#day5Date")
             day5Weather = document.querySelector("#day5weather")
             day5Temp = document.querySelector("#day5temp")
             day5Humid = document.querySelector("#day5humid")
             day5Wind = document.querySelector("#day5wind")
 
-            day5Date.textContent =moment(forecastdata.list[34].dt_txt).format("MMM D, YYYY");
+            day5Date.textContent = moment(forecastdata.list[34].dt_txt).format("MMM D, YYYY");
             day5Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[34].weather[0].icon + ".png")
             day5Temp.textContent = 'Temperature: ' + forecastdata.list[34].main.temp + '°F';
             day5Humid.textContent = 'Humidity: ' + forecastdata.list[34].main.humidity + '%';
