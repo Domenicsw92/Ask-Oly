@@ -3,22 +3,14 @@
 var searchFormEl = document.querySelector('#cities');
 var currentDay = document.querySelector('#current-city')
 var apiKey = '44fc609f492616405803745592784814';
-var foreCastDays = '5';
-var forcecastApikey = '13d310a8ade98b5144daa56c623f1370';
+var city_Array =[];
 
 
-function savedCities() {
-    localStorage.setItem("#cities", JSON.stringify());
-}
 
-function createdCitylist(searchInputVal) {
-    var savedCities = document.createElement("button")
-    savedCities.style.display = "block";
-    savedCities.textContent = searchInputVal;
-}
+
 
 function handleSearchFormSubmit(event) {
-    event.preventDefault();
+   event.preventDefault();
 
     var searchInputVal = document.querySelector('#searchCity').value;
     console.log(searchInputVal)
@@ -26,10 +18,10 @@ function handleSearchFormSubmit(event) {
         console.error('You need to search a proper city');
         return;
     }
-
+    //let searchedCity =searchInputVal
     var queryString = '#current-city'
     currentDay.textContent = searchInputVal
-    createdCitylist(searchInputVal)
+    //createdCitylist(searchInputVal)
     location.assign(queryString);
 
     var locQueryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInputVal}&appid=${apiKey}&units=imperial`;
@@ -153,9 +145,10 @@ function handleSearchFormSubmit(event) {
     })
 }
 
-
-
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
+
+
+
 
 
 
