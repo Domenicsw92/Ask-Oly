@@ -8,7 +8,7 @@ var forcecastApikey = '13d310a8ade98b5144daa56c623f1370';
 
 
 function savedCities() {
-    localStorage.setItem("cities", JSON.stringify(savedList));
+    localStorage.setItem("#cities", JSON.stringify());
 }
 
 function createdCitylist(searchInputVal) {
@@ -42,10 +42,6 @@ function handleSearchFormSubmit(event) {
         .then(function (currentdata) {
 
             console.log(currentdata)
-            console.log(currentdata.weather.icon)
-            console.log(currentdata.main.temp)
-            console.log(currentdata.main.humidity)
-            console.log(currentdata.wind.speed)
             var currentCity = document.querySelector('#selectedcity');
             var currentDayweather = document.querySelector('#current-dayweather');
             var currentDaytemp = document.querySelector('#current-daytemp');
@@ -72,11 +68,10 @@ function handleSearchFormSubmit(event) {
             currentDayFeel.textContent = 'Temperature Feels Like:  ' + currentdata.main.feels_like + '°F';
             currentDayhumid.textContent = 'Humidity: ' + currentdata.main.humidity + '%';
             currentDaywind.textContent = 'Wind Speed: ' + currentdata.wind.speed + 'mph';
-        })
+        
 
 
-
-    var weekQueryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchInputVal}&appid=${apiKey}&units=imperial`;
+    var weekQueryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentdata.coord.lat}&lon=${currentdata.coord.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=imperial`
 
     fetch(weekQueryUrl)
         .then(function (res) {
@@ -84,32 +79,33 @@ function handleSearchFormSubmit(event) {
         })
 
         .then(function (forecastdata) {
-            
+
             console.log(forecastdata)
+            //day1 forecast
             day1Date = document.querySelector("#day1Date")
             day1Weather = document.querySelector("#day1weather")
             day1Temp = document.querySelector("#day1temp")
             day1Humid = document.querySelector("#day1humid")
             day1Wind = document.querySelector("#day1wind")
 
-            day1Date.textContent = moment(forecastdata.list[2].dt_txt).format("MMM D, YYYY");
-            day1Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[2].weather[0].icon + ".png")
-            day1Temp.textContent = 'Temperature: ' + forecastdata.list[2].main.temp + '°F';
-            day1Humid.textContent = 'Humidity: ' + forecastdata.list[2].main.humidity + '%';
-            day1Wind.textContent = 'Wind Speed: ' + forecastdata.list[2].wind.speed + 'mph';
+            day1Date.textContent = moment.unix(forecastdata.daily[1].dt).format("MMM D, YYYY");
+            day1Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.daily[1].weather[0].icon + ".png")
+            day1Temp.textContent = 'Temperature: ' + forecastdata.daily[1].temp.day + '°F';
+            day1Humid.textContent = 'Humidity: ' + forecastdata.daily[1].humidity + '%';
+            day1Wind.textContent = 'Wind Speed: ' + forecastdata.daily[1].wind_speed + 'mph';
 
-        
+            //day 2 forecast
             day2Date = document.querySelector("#day2Date")
             day2Weather = document.querySelector("#day2weather")
             day2Temp = document.querySelector("#day2temp")
             day2Humid = document.querySelector("#day2humid")
             day2Wind = document.querySelector("#day2wind")
 
-            day2Date.textContent = moment(forecastdata.list[10].dt_txt).format("MMM D, YYYY");
-            day2Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[10].weather[0].icon + ".png")
-            day2Temp.textContent = 'Temperature: ' + forecastdata.list[10].main.temp + '°F';
-            day2Humid.textContent = 'Humidity: ' + forecastdata.list[10].main.humidity + '%';
-            day2Wind.textContent = 'Wind Speed: ' + forecastdata.list[10].wind.speed + 'mph';
+            day2Date.textContent = moment.unix(forecastdata.daily[2].dt).format("MMM D, YYYY");
+            day2Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.daily[2].weather[0].icon + ".png")
+            day2Temp.textContent = 'Temperature: ' + forecastdata.daily[2].temp.day + '°F';
+            day2Humid.textContent = 'Humidity: ' + forecastdata.daily[2].humidity + '%';
+            day2Wind.textContent = 'Wind Speed: ' + forecastdata.daily[2].wind_speed + 'mph';
 
 
             ///Day3forceast//
@@ -119,11 +115,11 @@ function handleSearchFormSubmit(event) {
             day3Humid = document.querySelector("#day3humid")
             day3Wind = document.querySelector("#day3wind")
 
-            day3Date.textContent = moment(forecastdata.list[18].dt_txt).format("MMM D, YYYY");
-            day3Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[18].weather[0].icon + ".png")
-            day3Temp.textContent = 'Temperature: ' + forecastdata.list[18].main.temp + '°F';
-            day3Humid.textContent = 'Humidity: ' + forecastdata.list[18].main.humidity + '%';
-            day3Wind.textContent = 'Wind Speed: ' + forecastdata.list[18].wind.speed + 'mph';
+            day3Date.textContent = moment.unix(forecastdata.daily[3].dt).format("MMM D, YYYY");
+            day3Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.daily[3].weather[0].icon + ".png")
+            day3Temp.textContent = 'Temperature: ' + forecastdata.daily[3].temp.day + '°F';
+            day3Humid.textContent = 'Humidity: ' + forecastdata.daily[3].humidity + '%';
+            day3Wind.textContent = 'Wind Speed: ' + forecastdata.daily[3].wind_speed + 'mph';
 
             //Day 4 forecast//
             day4Date = document.querySelector("#day4Date")
@@ -132,11 +128,11 @@ function handleSearchFormSubmit(event) {
             day4Humid = document.querySelector("#day4humid")
             day4Wind = document.querySelector("#day4wind")
 
-            day4Date.textContent = moment(forecastdata.list[26].dt_txt).format("MMM D, YYYY");
-            day4Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[26].weather[0].icon + ".png")
-            day4Temp.textContent = 'Temperature: ' + forecastdata.list[26].main.temp + '°F';
-            day4Humid.textContent = 'Humidity: ' + forecastdata.list[26].main.humidity + '%';
-            day4Wind.textContent = 'Wind Speed: ' + forecastdata.list[26].wind.speed + 'mph';
+            day4Date.textContent = moment.unix(forecastdata.daily[4].dt).format("MMM D, YYYY");
+            day4Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.daily[4].weather[0].icon + ".png")
+            day4Temp.textContent = 'Temperature: ' + forecastdata.daily[4].temp.day + '°F';
+            day4Humid.textContent = 'Humidity: ' + forecastdata.daily[4].humidity + '%';
+            day4Wind.textContent = 'Wind Speed: ' + forecastdata.daily[4].wind_speed + 'mph';
 
             //Day 5 forecast//
             day5Date = document.querySelector("#day5Date")
@@ -145,16 +141,19 @@ function handleSearchFormSubmit(event) {
             day5Humid = document.querySelector("#day5humid")
             day5Wind = document.querySelector("#day5wind")
 
-            day5Date.textContent = moment(forecastdata.list[34].dt_txt).format("MMM D, YYYY");
-            day5Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.list[34].weather[0].icon + ".png")
-            day5Temp.textContent = 'Temperature: ' + forecastdata.list[34].main.temp + '°F';
-            day5Humid.textContent = 'Humidity: ' + forecastdata.list[34].main.humidity + '%';
-            day5Wind.textContent = 'Wind Speed: ' + forecastdata.list[34].wind.speed + 'mph';
+            day5Date.textContent = moment.unix(forecastdata.daily[5].dt).format("MMM D, YYYY");
+            day5Weather.setAttribute("src", "http://openweathermap.org/img/w/" + forecastdata.daily[5].weather[0].icon + ".png")
+            day5Temp.textContent = 'Temperature: ' + forecastdata.daily[5].temp.day + '°F';
+            day5Humid.textContent = 'Humidity: ' + forecastdata.daily[5].humidity + '%';
+            day5Wind.textContent = 'Wind Speed: ' + forecastdata.daily[5].wind_speed + 'mph';
 
 
 
         })
+    })
 }
+
+
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
