@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets\css\styles.css">
     <title>Document</title>
 </head>
 
@@ -26,35 +26,129 @@
                 <div class="card-body">
                     <div class="card-text">
                         <form id="cities" class="form-inline my-2 my-lg-0">
-                            <input id="searchCity" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <input id="searchCity" class="form-control mr-sm-2" type="search" placeholder="Search"
+                                aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
-                        <form id="cityhistory" class="">
+                        <div id="cityhistory"></div>
+
                     
-                        </form>
 
                     </div>
                 </div>
         </section>
 
         <div class="col-8 float-right">
-            <section class="card bg-light text-dark custom-dash">
-                <div id="current-day"></div>
-                <div id="uvl-index"></div>
+            <section class="card jumbotron  bg-light text-dark custom-dash">
+                <div id="current-city" class="hide"></div>
+                <div id="selectedcity" class=></div>
+                <br>
+                <img src="" alt="" id="current-dayweather" class="images" >
+                <br>
+                <div id="current-daytemp"></div>
+                <br>
+                <div id="current-daytempfeelLike"></div>
+                <br>
+                <div id="current-dayhumid"></div>
+                <br>
+                <div id="current-daywind"></div>
+                <br>
+                <div id="current-dayuv"></div>
             </section>
             <br>
             <section>
-            <h2>5-Day Forcast</h2>
-            <div id="weekForcast" class="row"></div>
+                <h2>5-Day Forcast</h2>
+                <div id="weekForcast" class="row">
+                    <div class="col-sm-2">
+                        <div class="five card  text-white bg-primary mb-3">
+                            <div id="day1" class="card-body">
+                                <p class="card-text">
+                                <div id="day1Date"></div>
+                                <img src="" alt="" id="day1weather" class="images">
+                                <br>
+                                <div id="day1temp"></div>
+                                <br>
+                                <div id="day1humid"></div>
+                                <br>
+                                <div id="day1wind"></div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="five card  text-white bg-primary mb-3">
+                            <div id="day2" class="card-body">
+                                <p class="card-text">
+                                <div id="day2Date"></div>
+                                <img src="" alt="" id="day2weather" class="images">
+                                <br>
+                                <div id="day2temp"></div>
+                                <br>
+                                <div id="day2humid"></div>
+                                <br>
+                                <div id="day2wind"></div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="five card  text-white bg-primary mb-3">
+                            <div id="day3" class="card-body">
+                                <p class="card-text">
+                                <div id="day3Date"></div>
+                                <img src="" alt="" id="day3weather" class="images">
+                                <br>
+                                <div id="day3temp"></div>
+                                <br>
+                                <div id="day3humid"></div>
+                                <br>
+                                <div id="day3wind"></div>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="five card  text-white bg-primary mb-3">
+                            <div id="day4" class="card-body">
+                                <p class="card-text">
+                                <div id="day4Date"></div>
+                                <img src="" alt="" id="day4weather" class="images">
+                                <br>
+                                <div id="day4temp"></div>
+                                <br>
+                                <div id="day4humid"></div>
+                                <br>
+                                <div id="day4wind"></div>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="five card  text-white bg-primary mb-3">
+                            <div id="day5" class="card-body">
+                                <p class="card-text">
+                                <div id="day5Date"></div>
+                                <img src="" alt="" id="day5weather" class="images">
+                                <br>
+                                <div id="day5temp"></div>
+                                <br>
+                                <div id="day5humid"></div>
+                                <br>
+                                <div id="day5wind"></div>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
             </section>
         </div>
     </main>
-
-
-
-
-
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
