@@ -7,10 +7,8 @@ var city_Array = [];
 
 
 function savedCities() {
-    var city_Array = {
-        searchCity 
-
-    }
+    var city_Array = {searchCity,searchCitySubmit};
+console.log("city array variable: ", city_Array);
     localStorage.setItem("cities", JSON.stringify(city_Array));
 }
 
@@ -20,7 +18,7 @@ function searchCitySubmit(event) {
     event.preventDefault();
 
     var searchCity = document.querySelector('#searchCity').value;
-    console.log(searchCity)
+    
     if (!searchCity) {
         console.error('You need to search a proper city');
         return;
@@ -148,6 +146,8 @@ function searchCitySubmit(event) {
 }
 
 searchFormEl.addEventListener('submit', searchCitySubmit);
+
+savedCities()
 
 
 
