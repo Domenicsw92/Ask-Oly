@@ -6,24 +6,56 @@ var apiKey = '44fc609f492616405803745592784814';
 var city_Array = [];
 
 
-function savedCities() {
-    var city_Array = {searchCity,searchCitySubmit};
-console.log("city array variable: ", city_Array);
+function savedCities(searchCity) {
+    city_Array.push(searchCity)
+    //city_Array = [ searchCity, searchCitySubmit ];
+    console.log("city array variable: ", city_Array);
     localStorage.setItem("cities", JSON.stringify(city_Array));
+
 }
+function loadData() {
+
+    var loadData = localStorage.getItem("cities")
+    if (loadData == null || loadData == "") return;
+
+    var cityButtonArr = JSON.parse(loadData)
+
+    for (i = 0; i < cityButtonArr.length; i++) {
+        var createBtn = $("<button>")
+        createBtn.attr("class", "btn btn-outline-secondary")
+        createBtn.attr("type", "button")
+        createBtn.text(cityButtonArr[i])
+
+    }
+    $("#cityhistory").append(createBtn)
+}
+
+//function submitBtn() {
+    //var cityBtn = createBtn.value
+    //var test = searchCity.text(cityBtn)
+    //console.log(test)
+    //.addEventListener("click", searchCitySubmit)
+    // cityBtn.
+
+//}
+// create on button click 
+// create button. on click 
+// submit btn 
 
 
 
 function searchCitySubmit(event) {
     event.preventDefault();
 
-    var searchCity = document.querySelector('#searchCity').value;
-    
+    var searchCity = document.querySelector('#searchCity').value
+
     if (!searchCity) {
         console.error('You need to search a proper city');
         return;
     }
-
+    savedCities(searchCity)
+    loadData()
+   // submitBtn()
     var locQueryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}&units=imperial`;
 
     fetch(locQueryUrl)
