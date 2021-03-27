@@ -18,7 +18,7 @@ function handleSearchFormSubmit(event) {
         console.error('You need to search a proper city');
         return;
     }
-    //let searchedCity =searchInputVal
+    
     var queryString = '#current-city'
     currentDay.textContent = searchInputVal
     //createdCitylist(searchInputVal)
