@@ -85,7 +85,9 @@ function searchCitySubmit(event) {
                 .then(function (uvdata) {
                     console.log(uvdata);
                     console.log(uvdata.value);
+                    
                     currentDayuv.textContent = 'Uv Index:' + uvdata.value;
+                    currentDayuv.appendChild("color: red")
                 })
             currentCity.textContent = currentdata.name + "  " + "  " + moment().format('MMM D, YYYY');
             currentDayweather.setAttribute("src", "http://openweathermap.org/img/w/" + currentdata.weather[0].icon + ".png")
