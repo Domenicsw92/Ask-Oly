@@ -24,23 +24,24 @@ function loadData() {
         var createBtn = $("<button>")
         createBtn.attr("class", "btn btn-outline-secondary")
         createBtn.attr("type", "button")
+        createBtn.attr("id", 'searchCityHistory')
+        createBtn.attr("onclick", submitBtn)
         createBtn.text(cityButtonArr[i])
-
+     // createBtn.setAttribute("onclick",submitBtn)
+     // createBtn.addEventListener('click', submitBtn)
     }
     $("#cityhistory").append(createBtn)
 }
 
-//function submitBtn() {
-    //var cityBtn = createBtn.value
-    //var test = searchCity.text(cityBtn)
-    //console.log(test)
-    //.addEventListener("click", searchCitySubmit)
-    // cityBtn.
+function submitBtn() {
+    console.log("hello")
+    var elem = document.getElementById('searchCityHistory')
+    console.log(elem)
 
-//}
-// create on button click 
-// create button. on click 
-// submit btn 
+    //createBtn.setAttribute("onclick",searchCitySubmit);
+    //elem.addEventListener("click", searchCitySubmit)
+    //cityBtn.
+}
 
 
 
@@ -179,7 +180,10 @@ function searchCitySubmit(event) {
 
 searchFormEl.addEventListener('submit', searchCitySubmit);
 
-savedCities()
+submitBtn()
+
+
+
 
 
 

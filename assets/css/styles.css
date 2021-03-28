@@ -6,3 +6,7 @@
 .hide{
     display: none;
 }
+.custom-jumbotron{
+
+    background-color:rgba(82, 179, 224, 0.76);
+}
