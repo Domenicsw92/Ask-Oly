@@ -76,7 +76,7 @@ function searchCitySubmit(event) {
             var currentDayuv = document.querySelector('#current-dayuv');
 
 
-            var uvQueryUrl = `http://api.openweathermap.org/data/2.5/uvi?lat=${currentdata.coord.lat}&lon=${currentdata.coord.lon}&appid=${apiKey}&units=imperial`;
+            var uvQueryUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${currentdata.coord.lat}&lon=${currentdata.coord.lon}&appid=${apiKey}&units=imperial`;
             fetch(uvQueryUrl)
                 .then(function (res) {
                     return res.json()
